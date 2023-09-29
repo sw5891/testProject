@@ -1,0 +1,18 @@
+#%RAML 1.0
+title: testproject
+version: v1
+
+/series:
+ get:
+  queryParameters:
+   count:
+    required: true
+    type: number
+  responses:
+    200:
+      body:
+        application/json:
+          example: {"numbers": [1,2,3]}
+          
+      
+   
