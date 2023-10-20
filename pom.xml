@@ -52,6 +52,13 @@
 			<version>1.9.1</version>
 			<classifier>mule-plugin</classifier>
 		</dependency>
+		<dependency>
+			<groupId>99b9a835-d114-4561-8264-18540eddfb44</groupId>
+			<artifactId>testproject</artifactId>
+			<version>1.0.6</version>
+			<classifier>raml</classifier>
+			<type>zip</type>
+		</dependency>
 	</dependencies>
 
 	<repositories>
