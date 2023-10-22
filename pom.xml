@@ -2,12 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.mycompany</groupId>
-	<artifactId>testproject</artifactId>
+	<groupId>99b9a835-d114-4561-8264-18540eddfb44</groupId>
+	<artifactId>new-test-project</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>mule-application</packaging>
 
-	<name>testproject</name>
+	<name>new-test-project</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,6 +16,14 @@
 		<app.runtime>4.4.0-20230522</app.runtime>
 		<mule.maven.plugin.version>3.8.2</mule.maven.plugin.version>
 	</properties>
+	
+	<distributionManagement>
+    <repository>
+        <id>anypointplatform</id>
+       	<url>https://maven.anypoint.mulesoft.com/api/v2/organizations/99b9a835-d114-4561-8264-18540eddfb44/maven</url>
+      	<layout>default</layout>
+    </repository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
@@ -23,12 +31,30 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.2.0</version>
+				
 			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
+				 
+				   <configuration>
+					<cloudhub2Deployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<provider>MC</provider>
+						<environment>Sandbox</environment>
+						<target>Cloudhub-US-East-2</target>
+						<server>anypointplatform</server>
+				         <username>shrutiw22</username>
+				         <password>dighoq-xycveZ-xedzu5</password>         
+				        <replicas>1</replicas>
+						<vCores>0.1</vCores>
+				         <environment>Sandbox</environment>
+				         <muleVersion>4.4.0</muleVersion>
+				         <applicationName>test-project</applicationName>
+				      </cloudhub2Deployment>
+   				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -60,7 +86,7 @@
 			<type>zip</type>
 		</dependency>
 	</dependencies>
-
+ 
 	<repositories>
 		<repository>
 			<id>anypoint-exchange-v3</id>
@@ -68,24 +94,29 @@
 			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
 			<layout>default</layout>
 		</repository>
+		
+		<repository>
+			<id>anypointplatform</id>
+			<name>anypoint platform</name>
+		    <url>https://maven.anypoint.mulesoft.com/api/v3/organizations/99b9a835-d114-4561-8264-18540eddfb44/maven</url>
+			<layout>default</layout>
+		</repository>
+<!-- 
 		<repository>
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
 			<url>https://repository.mulesoft.org/releases/</url>
 			<layout>default</layout>
 		</repository>
+-->		
 	</repositories>
 
 	<pluginRepositories>
-		<pluginRepository>
-			<id>mulesoft-releases</id>
-			<name>MuleSoft Releases Repository</name>
-			<layout>default</layout>
-			<url>https://repository.mulesoft.org/releases/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</pluginRepository>
+	  <pluginRepository>
+	    <id>mule-public</id>
+	    <url>https://repository.mulesoft.org/nexus/content/repositories/releases</url>
+	  </pluginRepository>
 	</pluginRepositories>
+
 
 </project>
